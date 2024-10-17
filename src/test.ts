@@ -1,3 +1,6 @@
-import GetGoogleLinks from "./index";
+import GetAmazonProductDetails from "./index";
 
-GetGoogleLinks({ searches: `crawlora\nscaletech` });
+GetAmazonProductDetails({
+  ASIN: `B0BG88KRKP\nB0D25ZL4FF\nB0D91VBLDQ\nB00EJDG7XI\nB0CDLBFFKB
+    `,
+});
