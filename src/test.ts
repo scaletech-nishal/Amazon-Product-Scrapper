@@ -1,9 +1,6 @@
 import GetAmazonProductDetails from "./index";
 
-GetAmazonProductDetails({ ASIN: `B0D3J98W75
-` });
-
-// GetAmazonProductDetails({
-//   ASIN: `B07SC2Q85C
-//     `,
-// });
+GetAmazonProductDetails({
+  ASIN: `B0BG88KRKP\nB0D25ZL4FF\nB0D91VBLDQ\nB00EJDG7XI\nB0CDLBFFKB
+    `,
+});

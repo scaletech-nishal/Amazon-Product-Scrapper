@@ -1,13 +1,4 @@
-import {
-  apikey,
-  host,
-  password,
-  port,
-  protocol,
-  sequence_id,
-  showBrowser,
-  user_name,
-} from "./config";
+import { apikey, showBrowser, sequence_id } from "./config";
 import { browser } from "@crawlora/browser";
 
 export default async function ({ ASIN }: { ASIN: string }) {
@@ -17,11 +8,16 @@ export default async function ({ ASIN }: { ASIN: string }) {
 
   await browser(
     async ({ page, wait, output, debug }) => {
-      for await (const key of formedData) {
-        await page.goto(`https://www.amazon.com/dp/${key}`);
-        debug(`Visiting Amazon website for United Kingdom`);
+      for await (const asin_number of formedData) {
+        await page.goto(`https://www.amazon.co.uk/dp/${asin_number}`);
 
-        await wait(20);
+        debug(`Visiting Amazon website for United State`);
+        await wait(2);
+
+        await page.authenticate({
+          username: "soni",
+          password: "cif508i6on2XFwe5scRc_mode-quality",
+        });
 
         const productData = await page.evaluate(() => {
           const getText = (selector: string) =>
@@ -93,21 +89,35 @@ export default async function ({ ASIN }: { ASIN: string }) {
             Brand_URL: brandURL,
             Manufacturer_URL: manufacturerURL,
             Country_of_Origin: countryOfOrigin,
-            Breadcrumbs: breadcrumbs,
+            Breadcrumbs: breadcrumbs
+              .replace(/\n|\r/g, "")
+              .replace(/\s+/g, " ")
+              .split("›")
+              .map((item) => item.trim())
+              .filter((item) => item.length > 0)
+              .join(", "),
             Manufacturer: manufacturer,
-            Category: category,
+            Category: category
+              .replace(/\n|\r/g, "")
+              .replace(/\s+/g, " ")
+              .split("›")
+              .map((item) => item.trim())
+              .filter((item) => item.length > 0)
+              .join(", "),
             Dimensions: dimensions,
             Current_Time: currentTime,
-            Image_URL_1: imageUrls[0] || "N/A",
-            Image_URL_2: imageUrls[1] || "N/A",
-            Image_URL_3: imageUrls[2] || "N/A",
-            Image_URL_4: imageUrls[3] || "N/A",
-            Image_URL_5: imageUrls[4] || "N/A",
+            Image_URL_1: imageUrls[1] || "N/A",
+            Image_URL_2: imageUrls[2] || "N/A",
+            Image_URL_3: imageUrls[3] || "N/A",
+            Image_URL_4: imageUrls[4] || "N/A",
+            Image_URL_5: imageUrls[5] || "N/A",
           };
         });
 
         debug(`Fetching product titles and links`);
+
         await wait(2);
+
         debug(`Started submitting product data`);
 
         await output.create({

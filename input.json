@@ -1,12 +1,12 @@
 [
-    {
-        "type": "textarea",
-        "datatype": "string",
-        "placeholder": "Enter search keywords per line",
-        "default": "crawlora",
-        "label": "Google searchs",
-        "regex": "/^.*$/",
-        "required": true,
-        "name": "searches"
-      }
+  {
+    "type": "textarea",
+    "datatype": "string",
+    "placeholder": "Enter ASIN number on each line like\nB0D3J98W75",
+    "default": "B0D3J98W75",
+    "label": "ASIN number",
+    "regex": "/^.*$/",
+    "required": true,
+    "name": "ASIN"
+  }
 ]
