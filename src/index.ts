@@ -14,11 +14,6 @@ export default async function ({ ASIN }: { ASIN: string }) {
         debug(`Visiting Amazon website for United State`);
         await wait(2);
 
-        await page.authenticate({
-          username: "soni",
-          password: "cif508i6on2XFwe5scRc_mode-quality",
-        });
-
         const productData = await page.evaluate(() => {
           const getText = (selector: string) =>
             document.querySelector(selector)?.textContent?.trim() || "N/A";
