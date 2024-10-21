@@ -115,11 +115,10 @@ export default async function ({ ASIN }: { ASIN: string }) {
 
         debug(`Started submitting product data`);
 
-        // await output.create({
-        //   sequence_id,
-        //   sequence_output: productData,
-        // });
-        console.log("", productData);
+        await output.create({
+          sequence_id,
+          sequence_output: productData,
+        });
 
         debug(`Submitted product data`);
       }
