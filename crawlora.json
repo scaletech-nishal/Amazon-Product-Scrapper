@@ -15,5 +15,6 @@
   "short_description": "Scrap Amazon products data",
   "version": "1.0.0",
   "documentation_file": "./documentation.md",
-  "input_file": "./input.json"
+  "input_file": "./input.json",
+  "app_id": "1c2c64f9-d9d7-4103-a7ec-a0c29338a04f"
 }
