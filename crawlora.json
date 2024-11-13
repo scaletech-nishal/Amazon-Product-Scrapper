@@ -11,7 +11,7 @@
   ],
   "logo_file": "./assets/logo.png",
   "banner_file": "./assets/banner.png",
-  "title": "Amazon Product Data Scraper",
+  "title": "Amazon Product Scraper",
   "short_description": "Scrap Amazon products data",
   "version": "1.0.0",
   "documentation_file": "./documentation.md",
